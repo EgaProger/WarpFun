@@ -24,7 +24,10 @@ $(document).ready(function () {
         event.preventDefault();
         setTimeout(function() {window.location = "https://warp.fun/";}, 100);
     });
-    $('.get-api-code').click(function ())
+    $('.get-api-code').click(function(event){
+        event.preventDefault();
+        setTimeout(function() {window.location = "https://warp.fun/api/get-access-key/";}, 100);
+    });
     $('.discord').click(function() {
         navigator.clipboard.writeText($('.discord-text').text());
         $('.discord').text('Скопировано');
