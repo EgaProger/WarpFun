@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Рассылка{% endblock %}
+
+{% block nav_elements %}
+	<a class="p-2 text-dark larger-font underline-hovering api-nav" href="/api/">API</a>
+	<a class="p-2 text-dark larger-font underline-hovering about" href="/about/">Связь</a>
+{% endblock %}
+
+{% block content %}
+<br>   
+<div class="subscribe text-center container border-bottom">
+    <h3 class="subscribe-title">Подпишись на нашу еженедельную рассылку</h3>
+    <p class="larger-font">Там будут интересные новости из мира IT.</p>
+    <form method="post">
+        <input type="email" class="email input-form" name="email" placeholder="Введи свой E-Mail" id="email"><br><br>
+        <input type="submit" class="btn btn-primary send larger-font btn-generate">
+    </form><br>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Успешно создана{% endblock %}
+
+{% block nav_elements %}
+	<a class="p-2 text-dark larger-font underline-hovering api-nav" href="/api/">API</a>
+	<a class="p-2 text-dark larger-font underline-hovering about" href="/about/">Связь</a>
+	<a class="p-2 text-dark larger-font underline-hovering mailing" href="/mailing/">Рассылка</a>
+{% endblock %}
+
+
+{% block content %}
+	<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+		<h1 class="display-4">WarpLink</h1>
+	</div>
+	<div class="container border-bottom">
+		<h2 class="text-center">Успешно создана короткая ссылка <br> <span class="short_url">{{ url }}</span></h2>
+		<h5 class="text-center copy">(нажмите на ссылку, чтобы скопировать)</h5>
+		<br>
+	</div><br>
+{% endblock %}

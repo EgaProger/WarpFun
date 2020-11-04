@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Получить ключ доступа{% endblock %}
+
+{% block nav_elements %}
+    <a class="p-2 text-dark larger-font underline-hovering api-nav" href="/api/">API</a>
+    <a class="p-2 text-dark larger-font underline-hovering about" href="/about/">Связь</a>
+    <a class="p-2 text-dark larger-font underline-hovering mailing" href="/mailing/">Рассылка</a>
+{% endblock %}
+
+{% block content %}
+    <br>
+    <div class="container text-center border-bottom">
+        <h1>Получение ключа доступа</h1>
+        <form method="post">
+            <input type="email" class="email input-form" id="email" name="email" value="{{ status }}" {{ readonly }} placeholder="Введите свой E-Mail">
+            <p>{{ status_down }}</p>
+            <input type="submit" class="btn btn-primary send larger-font btn-generate {{ href }}" value="{{ btn_value }}">
+        </form>
+        <br>
+    </div>
+{% endblock %}

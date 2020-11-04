@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная{% endblock %}
+		
+{% block nav_elements %}
+	<a class="p-2 text-dark larger-font underline-hovering api-nav" href="/api/">API</a>
+{% endblock %}
+
+{% block content %}		
+	<div class="lending-block">
+		<div class="lead-block">
+			<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+				<h1 class="display-4">WarpLink</h1>
+				<p class="lead larger-font" style="font-size: 18px;">Создай укороченную ссылку одним кликом абсолютно бесплатно!</p>
+				<p style="font-size: 14px;">Для того, чтобы посмотреть сколько человек перешло по вашей ссылке, достаточно дописать в конце сокращенной ссылки звездочку (*)</p>
+			</div>
+		</div>
+		<div class="container">
+			<form method="post" class="form text-center">
+				<input type="text" id="url" name="url" class="input-form" placeholder="Введи свою ссылку"> <br> <br>
+				<input type="submit" class="btn btn-primary larger-font btn-generate" value="Создать">
+			</form><br>
+			<figure class="text-center border-top">
+				<img src="static/img/arrow.png" alt="" height="20" class="scroll-down">
+			</figure><br>
+			<div class="about-short-link">
+				<p class="about-short-link__title text-center">Зачем нужна короткая ссылка</p><br><br>
+				<div class="about-short-link__main">
+					<div class="block-1">
+						<figure class="block-1-fig">
+							<img src="static/img/up.png" alt="" height="300" class="block-img">
+							<figcaption class="larger-font block-description-1">В маркетинговых целях</figcaption>
+						</figure>
+					</div>
+					<div class="block-2">
+						<figure class="block-2-fig text-center">
+							<img src="static/img/brain.png" alt="" height="300" class="brain-img">
+							<figcaption class="larger-font block-description-2">Легко запоминать и использовать</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+		</div><br><br>
+	</div>
+	<div class="container why-us border-top" style="clear: both;">
+		<br>
+		<h3 class="text-center">Почему мы?</h3><br>
+		<div class="item-why-us-1">
+			<figure>
+				<img src="{{ url_for('static', filename='img/dollar.png') }}" class="item-why-us-img" width="250">
+				<figcaption class="larger-font item-why-us-1-description">Абсолютно бесплатно</figcaption>
+			</figure>
+		</div>
+
+		<div class="item-why-us-2">
+			<figure>
+				<img src="{{ url_for('static', filename='img/api.png') }}" class="item-why-us-img" width="250">
+				<figcaption class="larger-font item-why-us-2-description">Легкая интеграция с нашим API</figcaption>
+				<small class="item-why-us-2-description">Картинка сделана автором <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> и взята с сайта <br><a class="rights-text" href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></small>
+			</figure>
+		</div>
+		<!-- Картинка сделана автором <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> и взята с сайта <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
+	</div>
+	<br>
+	<div class="container container-about border-top" style="clear: both;">
+		<h4 class="text-center title-about">Если вы нашли какую-то ошибку или хотите связаться с автором WarpLink, то можете обратиться на следующие платформы:</h4>
+		<div class="card-deck mb-3 text-center border-bottom">
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">Discord</h4>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title pricing-card-title"><span class="discord-text">W0terMe10n#8498</span></h5>
+					<button type="button" class="btn btn-lg btn-block btn-outline-primary discord">Скопировать</button>
+				</div>
+			</div>
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">ВКонтакте</h4>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title pricing-card-title vk-text">@egaproger</h5>
+					<a href="https://vk.com/egaproger"><button type="button" class="btn btn-lg btn-block btn-outline-primary vk">Перейти</button></a>
+				</div>
+			</div>
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">E-Mail</h4>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title pricing-card-title"><span class="gmail-text">egaproger@gmail.com</span></h5>
+					<button type="button" class="btn btn-lg btn-block btn-outline-primary gmail">Скопировать</button>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>
+	<div class="subscribe text-center container border-bottom">
+		<h3 class="subscribe-title">Подпишись на нашу еженедельную рассылку</h3>
+		<p class="larger-font">Там будут интересные новости из мира IT.</p><br>
+		<form method="post">
+			<input type="email" class="email input-form" name="email" id="email" placeholder="Введи свой E-Mail"><br><br>
+			<input type="submit" class="btn btn-primary send larger-font btn-generate">
+		</form><br>
+	</div>
+{% endblock %}
