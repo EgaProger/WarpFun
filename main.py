@@ -242,12 +242,12 @@ def get_key():
                 send_email(email)
 
             except:
-                return render_template('accesskey.html', status='Письмо не было отправлено', readonly='readonly', btn_value='Повторить попытку', href='api-get-code')
+                return render_template('accesskey.html', status='Письмо не было отправлено', readonly='readonly',  href='api-get-code', btn_value='Повторить попытку')
 
-            return render_template('accesskey.html', status='Письмо было отправлено', readonly='readonly', btn_value='Успешно', href='api-nav')
+            return render_template('accesskey.html', status='Письмо было отправлено', readonly='readonly', href='api-nav', btn_value='Успешно')
 
     else:
-        return render_template('accesskey.html', status_down='На ваш электронный ящик придет письмо с ключом доступа (access key)')
+        return render_template('accesskey.html', status_down='На ваш электронный ящик придет письмо с ключом доступа (access key)', href='', btn_value='Отправить')
 
 
 @app.route('/mailing/', methods=['POST', 'GET'])
