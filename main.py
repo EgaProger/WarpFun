@@ -273,6 +273,10 @@ def mailing():
 def mail_success():
     return render_template('mail_success.html')
 
+@app.route('/dev/')
+def dev():
+    return render_template('dev.html')
+
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
