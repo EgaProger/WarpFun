@@ -8,9 +8,7 @@ from email.mime.multipart import MIMEMultipart
 import string
 from random import choice
 
-
 letters = list(string.ascii_letters) + list(string.digits)
-
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db.db"
@@ -151,7 +149,7 @@ def API_createShortLink(YOUR_ACCESS_KEY, YOUR_ORIGIN_LINK):
 
             else:
                 return "InvalidUrl"
-            
+
         else:
             return 'Invalid AccessKey'
 
@@ -170,7 +168,7 @@ def API_clicks(YOUR_ACCESS_KEY, YOUR_SHORT_LINK):
 
         else:
             return 'InvalidUrl'
-            
+
     else:
         return 'Invalid AccessKey'
 
@@ -180,7 +178,8 @@ def redirect_from_short_link(short_link):
     short_url = Link.query.filter_by(short_link=short_link).first()
     try:
         if short_url.short_link != None:
-            new_link = Link(origin_link=short_url.origin_link, short_link=short_url.short_link, clicks=short_url.clicks+1)
+            new_link = Link(origin_link=short_url.origin_link, short_link=short_url.short_link,
+                            clicks=short_url.clicks + 1)
             url = short_url.origin_link
             db.session.delete(short_url)
             db.session.add(new_link)
@@ -198,13 +197,13 @@ def redirect_from_short_link(short_link):
         return 'Invalid AccessKey'
 
 
-
 @app.route('/<string:short_link>*/')
 def get_clicks(short_link):
     try:
         short_url = Link.query.filter_by(short_link=short_link).first()
         if short_url.short_link != None:
-            return render_template('clicks.html', clicks=short_url.clicks, link='https://warp.fun/'+short_url.short_link)
+            return render_template('clicks.html', clicks=short_url.clicks,
+                                   link='https://warp.fun/' + short_url.short_link)
 
         else:
             return redirect('/invalid-link/')
@@ -242,12 +241,16 @@ def get_key():
                 send_email(email)
 
             except:
-                return render_template('accesskey.html', status='Письмо не было отправлено', readonly='readonly',  href='api-get-code', btn_value='Повторить попытку')
+                return render_template('accesskey.html', status='Письмо не было отправлено', readonly='readonly',
+                                       href='api-get-code', btn_value='Повторить попытку')
 
-            return render_template('accesskey.html', status='Письмо было отправлено', readonly='readonly', href='api-nav', btn_value='Успешно')
+            return render_template('accesskey.html', status='Письмо было отправлено', readonly='readonly',
+                                   href='api-nav', btn_value='Успешно')
 
     else:
-        return render_template('accesskey.html', status_down='На ваш электронный ящик придет письмо с ключом доступа (access key)', href='', btn_value='Отправить')
+        return render_template('accesskey.html',
+                               status_down='На ваш электронный ящик придет письмо с ключом доступа (access key)',
+                               href='', btn_value='Отправить')
 
 
 @app.route('/mailing/', methods=['POST', 'GET'])
@@ -273,9 +276,15 @@ def mailing():
 def mail_success():
     return render_template('mail_success.html')
 
+
 @app.route('/dev/')
 def dev():
     return render_template('dev.html')
+
+
+@app.route('/blog/')
+def blog():
+    return render_template('blog.html')
 
 
 @app.route('/', methods=['POST', 'GET'])

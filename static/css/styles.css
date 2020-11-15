@@ -23,6 +23,18 @@ body {
 	left: 25px;
 }
 
+.dev-head {
+	border: black solid 0.7px;
+	padding: 10px;
+	width: 350px;
+	height: 150px;
+	margin-bottom: 50px;
+}
+
+.dev-head-el {
+	margin-left: 20px!important;
+}
+
 .item-why-us-2-description {
 	position: relative;
 	right: 15px; 

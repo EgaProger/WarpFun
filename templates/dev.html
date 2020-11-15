@@ -8,7 +8,77 @@
 {% endblock %}
 
 {% block content %}
-<h2 class="text-center">DEV</h2>
-
-<h5 class="text-center">Данный раздел будет полезен разработчикам</h5>
+    <div class="container border-bottom"><br>
+        <h2 class="text-center">DEV</h2>
+        <h5 class="text-center lead">Данный раздел будет полезен разработчикам</h5><br>
+        <div class="dev-head">
+            <h5 class="larger-font dev-head-title">Содержание:</h5>
+            <p class="larger-font dev-head-el underline-from-left dev-head-el-docs"><a href="#dev-api" style="color: black;">Документация WarpLink API</a></p>
+            <p class="larger-font dev-head-el underline-from-left dev-head-el-about">О WarpLink</p>
+        </div>
+    </div>
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='img/arrow.png') }}" alt="" height="20" class="scroll-down">
+    </div><br>
+    <div class="api-block container" id="dev-api"><br>
+		<h1 class="text-center">Как пользоваться WarpLink API?</h1><br>
+		<div class="new-link border-bottom">
+			<div class="text-center">
+				<h3 class="new-link__title">Создание новой сокращенной ссылки</h3>
+				<img src="{{ url_for('static', filename='img/new_link.png') }}" alt="" class="new-link__img">
+			</div><br>
+			<div class="new-link-how-to container">
+				<p class="larger-font">
+					Сначала, как и в большинстве сервисов, предоставляющих доступ к API, вам будет необходимо получить ключ доступа.
+					Без него пользователи бы начали засорять наши базы данных, а они не бесконечны, как бы нам этого не хотелось.
+				</p>
+				<h4 class="text-center larger-font">Сделать это можно <a href="/api/get-access-key/">здесь</a>.</h4>
+				<p class="larger-font">
+					Так, мы немного отвлеклись от темы. Давайте же начнем. Как я уже говорил, доступ к нашим серверам осуществяется с помощью простых URL запросов.
+					Для генерации новой сокращенной ссылки вам нужен ключ доступа (access key) и сама длинная (оригинальная) ссылка, на которую, впоследствии будет осуществлён переход.<br>
+					Вот вид запроса (каким он должен быть): <br>
+					<code>
+						&nbsp;&nbsp;&nbsp;warp.fun/api/create/accesskey=<span class="green">YOUR_ACCESS_KEY</span>;originlink=<span class="green">YOUR_ORIGIN_LINK</span>/
+					</code><br>
+					Видим две переменные, про которые я сказал выше: <code class="green">YOUR_ACCESS_KEY</code> и <code class="green">YOUR_ORIGIN_LINK</code>.<br>
+					Вместо них подставляем свои. Например: <br>
+					<code>
+						&nbsp;&nbsp;&nbsp;warp.fun/api/create/accesskey=<span class="green">QWERTY123</span>;originlink=<span class="green">gismeteo.ru<sup style="color: black; font-size: 18px;">*</sup></span>/
+					</code><br>
+					&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Замечание</span>: <span style="color: black; font-size: 20px;">*</span> - в значении <code class="green">YOUR_ORIGIN_LINK</code> необходимо указывать ссылку без <code>http://</code> или <code>https://</code>, иначе <code>Not Found</code><br>
+					Следующим шагом будет получение ответа, он будет просто срендерен, как обычная Web страница и будет выглядеть следуюшим образом: <br>
+					<code>&nbsp;&nbsp;&nbsp;warp.fun/<span class="green">qwerty</span></code>, где <span class="green">qwerty</span> - рандомная генерация чисел и букв
+					<br>
+					Например: <br>
+					<code>
+						&nbsp;&nbsp;&nbsp;warp.fun/dj54df
+					</code>
+					<img src="static/img/examples/" alt=""> <!--Пока не доделано-->
+				</p>
+			</div>
+		</div>
+		<div class="number-of-clicks container border-bottom">
+			<div class="text-center">
+				<h3>Сколько кликов по ссылке было совершено?</h3>
+				<img src="{{ url_for('static', filename='img/click.png') }}" class="click-img" width="350" alt="">
+			</div><br>
+			<p class="larger-font">
+				Узнать это очень легко. Для этого вам необходимо иметь тот самый ключ доступа и нашу сокращенную ссылку.
+				Вид запроса: <br>
+				<code>&nbsp;&nbsp;&nbsp;warp.fun/api/clicks/accesskey=<span class="green">YOUR_ACCESS_KEY</span>;shortlink=<span class="green">YOUR_SHORT_LINK</span>/</code><br>
+				Где <code class="green">YOUR_ACCESS_KEY</code> - это ключ доступа, а <code class="green">YOUR_SHORT_LINK</code> - сокращенная ссылка<br>
+				Пример запроса: <br>
+				<code>
+					&nbsp;&nbsp;&nbsp;warp.fun/api/clicks/accesskey=<span class="green">QWERTY123</span>;shortlink=<span class="green">jfddf5</span><sup style="color: black; font-size: 18px;">*</sup>/
+				</code><br>
+				&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Замечание</span>: <span style="color: black; font-size: 20px;">*</span> - в значении <code class="green">YOUR_SHORT_LINK</code> нужно писать только рандомную генерацию букв и чисел, иначе <code>InvalidUrl</code>
+				<br>
+				Ответ будет представлен в виде целого натурального числа, например:
+				<br>
+				<code>
+					&nbsp;&nbsp;&nbsp;8
+				</code>
+			</p>
+		</div>
+    </div>
 {% endblock %}
