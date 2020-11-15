@@ -6,6 +6,10 @@ body {
 	display: block;
 }
 
+.nav-el {
+	padding-bottom: 2px!important;
+}
+
 .item-why-us-1 {
 	float: left;
 }
