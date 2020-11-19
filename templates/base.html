@@ -9,8 +9,16 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pricing.css') }}">
         <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js"></script>
     </head>
     <body>
+      <div class="modal-window">
+        <div class="modal-window-content text-center">
+          <h4 class="modal-window-content-title text-center">Уважаемый пользователь!</h4>
+          <p class="larger-font">Отключи, пожалуйста, блокировщик рекламы на этом сайте, автору нечем платить за хостинг. Просматривая рекламу на сайте, вы помогаете развиваться проекту.</p>
+        </div>
+      </div>
+      <div class="all-content">
         <div class="nav-block">
             <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
                 <h4 class="my-0 mr-md-auto font-weight-normal main underline-from-left"><a href="/" style="text-decoration: none; color: black;">WarpLink</a></h4>
@@ -20,6 +28,7 @@
                 </nav>
             </div>
         </div>
+
         {% block content %}
         {% endblock %}
         <br>
@@ -32,7 +41,9 @@
                       <figcaption>© 2020</figcaption>
                     </figure>
                 </div>
-              </div>      
+              </div>
         </footer>
+      </div>
+      <img id="ad-detect" class="ads banner" src="{{ url_for('static', filename='img/ad.png') }}" alt="This must be hidden" />
     </body>
 </html>
