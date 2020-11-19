@@ -22,17 +22,17 @@
     </div><br>
     <div class="api-block container" id="dev-api"><br>
 		<h1 class="text-center">Как пользоваться WarpLink API?</h1><br>
+		<p class="larger-font">
+			Сначала, как и в большинстве сервисов, предоставляющих доступ к API, вам будет необходимо получить ключ доступа.
+			Без него пользователи бы начали засорять наши базы данных, а они не бесконечны, как бы нам этого не хотелось.
+		</p>
+		<h4 class="text-center larger-font">Сделать это можно <br> <a href="/api/get-access-key/" class="btn btn-get-access-key text-center get-api-code">здесь</a></h4>
 		<div class="new-link border-bottom">
 			<div class="text-center">
 				<h3 class="new-link__title">Создание новой сокращенной ссылки</h3>
 				<img src="{{ url_for('static', filename='img/new_link.png') }}" alt="" class="new-link__img">
 			</div><br>
 			<div class="new-link-how-to container">
-				<p class="larger-font">
-					Сначала, как и в большинстве сервисов, предоставляющих доступ к API, вам будет необходимо получить ключ доступа.
-					Без него пользователи бы начали засорять наши базы данных, а они не бесконечны, как бы нам этого не хотелось.
-				</p>
-				<h4 class="text-center larger-font">Сделать это можно <a href="/api/get-access-key/">здесь</a>.</h4>
 				<p class="larger-font">
 					Так, мы немного отвлеклись от темы. Давайте же начнем. Как я уже говорил, доступ к нашим серверам осуществяется с помощью простых URL запросов.
 					Для генерации новой сокращенной ссылки вам нужен ключ доступа (access key) и сама длинная (оригинальная) ссылка, на которую, впоследствии будет осуществлён переход.<br>
@@ -53,7 +53,6 @@
 					<code>
 						&nbsp;&nbsp;&nbsp;warp.fun/dj54df
 					</code>
-					<img src="static/img/examples/" alt=""> <!--Пока не доделано-->
 				</p>
 			</div>
 		</div>
