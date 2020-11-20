@@ -11,7 +11,7 @@ $(document).ready(function () {
     $(document).click(function() {
         $('.modal-window').hide();
         $('.all-content').css('opacity', '1');
-        $('body').css('overflow', 'scroll');
+        $('body').css('overflow', 'auto');
     });
   	$('.short_url').click( function () {
   		navigator.clipboard.writeText($('.short_url').text())
