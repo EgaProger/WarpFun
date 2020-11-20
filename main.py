@@ -107,7 +107,7 @@ def send_email(sent_to):
 
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
     server.ehlo()
-    server.login(sent_from, '*$fhT*eEy~')
+    server.login(sent_from, 'password') # invalid password 
     server.sendmail(sent_from, sent_to, message.as_string())
     server.close()
 
