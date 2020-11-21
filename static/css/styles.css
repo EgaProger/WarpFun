@@ -480,6 +480,9 @@ a:hover {
 	.larger-font {
 		font-size: 18px;
 	}
+	.dev-head {
+		height: 137px;
+	}
 }
 
 @media (max-width: 560px) {
@@ -525,6 +528,7 @@ a:hover {
 @media (max-width: 465px) {
 	.dev-head {
 		width: 300px;
+		height: 130px;
 	}
 }
 
