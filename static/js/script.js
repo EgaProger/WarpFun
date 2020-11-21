@@ -21,9 +21,9 @@ $(document).ready(function () {
   				$('.copy').css('color', 'red');})
         });
 
-    $('.api-nav').click(function (event) {
+    $('.dev-nav').click(function (event) {
         event.preventDefault();
-        setTimeout(function() {window.location = "https://warp.fun/api/";}, 100);
+        setTimeout(function() {window.location = "https://warp.fun/dev/";}, 100);
     });
     $('.mailing').click(function (event) {
         event.preventDefault();
@@ -39,7 +39,7 @@ $(document).ready(function () {
     });
     $('.get-api-code').click(function(event){
         event.preventDefault();
-        setTimeout(function() {window.location = "https://warp.fun/api/get-access-key/";}, 100);
+        setTimeout(function() {window.location = "https://warp.fun/dev/get-access-key/";}, 100);
     });
     $('.discord').click(function() {
         navigator.clipboard.writeText($('.discord-text').text());
