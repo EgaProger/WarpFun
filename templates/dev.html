@@ -3,7 +3,7 @@
 {% block title %}Для разработчиков{% endblock %}
 
 {% block nav_elements %}
-	<a class="p-2 text-dark larger-font underline-from-left about nav-el" href="/about/">Связь</a>
+	<a class="p-2 text-dark larger-font underline-from-left about nav-el" href="/about-author/">Связь</a>
 	<a class="p-2 text-dark larger-font underline-from-left mailing nav-el" href="/mailing/">Рассылка</a>
 {% endblock %}
 
@@ -14,7 +14,7 @@
         <div class="dev-head">
             <h5 class="larger-font dev-head-title">Содержание:</h5>
             <p class="larger-font dev-head-el underline-from-left dev-head-el-docs"><a href="#dev-api" style="color: black;">Документация WarpLink API</a></p>
-            <p class="larger-font dev-head-el underline-from-left dev-head-el-about">О WarpLink</p>
+            <p class="larger-font dev-head-el underline-from-left dev-head-el-about"><a href="#dev-about" style="color: black;">О WarpLink</a></p>
         </div>
     </div>
     <div class="text-center">
@@ -80,4 +80,22 @@
 			</p>
 		</div>
     </div>
+		<div class="text-center">
+        <img src="{{ url_for('static', filename='img/arrow.png') }}" alt="" height="20" class="scroll-down">
+    </div><br>
+		<div class="container dev-about border-bottom" id="dev-about"><br>
+			<h1 class="text-center">О проекте</h1><br>
+			<p class="larger-font">WarpLink разрабатывается одним человеком.
+				Сервер написан на языке программирования Python, версии 3 с ипользованием его библиотеки Flask.
+				Этот проект опенсорсный, а это значит, что вы можете посмотреть исходный код <a href="https://github.com/egaproger/warpfun">по ссылке</a>.
+				По-моему, для начинающих программистов полезно посмотреть, как делаются подобные проекты.
+				Принцип действия всех сайтов для сокращения ссылок очень прост:<br>
+				<b>1) </b>получение исходной "большой" ссылки от пользователя<br>
+				<b>2) </b>генерация "маленькой" ссылки<br>
+				<b>3) </b>добавление этих двух ссылок в базу данных<br>
+				<b>4) </b>при переходе по "маленькой" ссылке выполнение проверки, существует ли "маленькая" ссылка в базе данных<br>
+				<b>5) </b>Если да, то перебрасываем пользователя по адресу "большой" ссылки, иначе выводим ошибку<br>
+				Как видите, все не так сложно.
+			</p>
+		</div>
 {% endblock %}
