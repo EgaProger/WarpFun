@@ -2,4 +2,4 @@
 
 Quick tool to shorten links
 
-Visit warp.fun to learn more
+Visit [warp.fun](https://www.warp.fun) to learn more
