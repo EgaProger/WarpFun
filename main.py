@@ -19,6 +19,7 @@ db = SQLAlchemy(app)
 
 
 class Link(db.Model):
+    '''Поле для одной ссылки в таблице'''
     id = db.Column(db.Integer, primary_key=True)
     origin_link = db.Column(db.Text, nullable=False)
     short_link = db.Column(db.Text, nullable=False)
@@ -29,6 +30,7 @@ class Link(db.Model):
 
 
 class AccessKey(db.Model):
+    '''Поле для ключа доступа в таблице'''
     id = db.Column(db.Integer, primary_key=True)
     key = db.Column(db.Text, nullable=False)
 
@@ -37,6 +39,7 @@ class AccessKey(db.Model):
 
 
 class Email(db.Model):
+    '''Поле для электронной почты в таблице в таблице'''
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.Text, nullable=False)
 
@@ -44,31 +47,8 @@ class Email(db.Model):
         return 'Email %r>' % self.id
 
 
-def get_short_comb(your_str):
-    if 'http' not in your_str:
-        your_str = 'https://' + your_str
-    output = list(your_str)
-    a = output[::-1]
-    if a[0] == '/':
-        del a[0]
-        for i in a:
-            if i == '/':
-                index = a.index('/')
-                del a[index:len(a)]
-        return "".join(a[::-1])
-
-    elif a[0] != '/':
-        for i in a:
-            if i == '/':
-                index = a.index('/')
-                del a[index:len(a)]
-        return "".join(a[::-1])
-
-    else:
-        return 'Invalid url'
-
-
 def generateAccessKey():
+    '''Генерация ключа доступа'''
     access_key = []
     for i in range(0, 10):
         access_key.append(choice(letters))
@@ -77,6 +57,7 @@ def generateAccessKey():
 
 
 def send_email(sent_to):
+    '''Отправка письма на эл. почту'''
     access_key = generateAccessKey()
     accesskey = AccessKey(key=access_key)
     db.session.add(accesskey)
@@ -107,7 +88,7 @@ def send_email(sent_to):
 
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
     server.ehlo()
-    server.login(sent_from, 'password') # invalid password 
+    server.login(sent_from, 'password') # invalid password
     server.sendmail(sent_from, sent_to, message.as_string())
     server.close()
 
@@ -116,6 +97,7 @@ validate = URLValidator()
 
 
 def generateShortLink():
+    '''Генерация сокращенной ссылки'''
     short_url = []
     for i in range(0, 6):
         short_url.append(choice(letters))
@@ -124,6 +106,7 @@ def generateShortLink():
 
 
 def gen():
+    '''Говнокод'''
     short_url = generateShortLink()
     query = Link.query.filter_by(short_link=short_url).first()
     if query is None or query != short_url:
@@ -161,8 +144,7 @@ def API_createShortLink(YOUR_ACCESS_KEY, YOUR_ORIGIN_LINK):
 def API_clicks(YOUR_ACCESS_KEY, YOUR_SHORT_LINK):
     query = AccessKey.query.filter_by(key=YOUR_ACCESS_KEY).first()
     if YOUR_ACCESS_KEY == query.key:
-        short_link = get_short_comb(YOUR_SHORT_LINK)
-        query = Link.query.filter_by(short_link=short_link).first()
+        query = Link.query.filter_by(short_link=YOUR_SHORT_LINK).first()
         if query.short_link != None:
             return '{}'.format(query.clicks)
 
@@ -217,14 +199,9 @@ def success_in_create_link(short_link):
     return render_template('success.html', url='warp.fun/' + short_link)
 
 
-@app.route('/api/')
-def api():
-    return render_template('api.html')
-
-
-@app.route('/about/')
+@app.route('/about-author/')
 def about():
-    return render_template('about.html')
+    return render_template('about-author.html')
 
 
 @app.route('/invalid-link/')
@@ -280,11 +257,6 @@ def mail_success():
 @app.route('/dev/')
 def dev():
     return render_template('dev.html')
-
-
-@app.route('/blog/')
-def blog():
-    return render_template('blog.html')
 
 
 @app.route('/', methods=['POST', 'GET'])
