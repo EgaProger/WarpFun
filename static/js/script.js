@@ -21,7 +21,7 @@ $(document).ready(function () {
   				$('.copy').css('color', 'red');})
         });
 
-    /*$('.api-nav').click(function (event) {
+    $('.api-nav').click(function (event) {
         event.preventDefault();
         setTimeout(function() {window.location = "https://warp.fun/api/";}, 100);
     });
@@ -40,7 +40,7 @@ $(document).ready(function () {
     $('.get-api-code').click(function(event){
         event.preventDefault();
         setTimeout(function() {window.location = "https://warp.fun/api/get-access-key/";}, 100);
-    });*/
+    });
     $('.discord').click(function() {
         navigator.clipboard.writeText($('.discord-text').text());
         $('.discord').text('Скопировано');
@@ -52,18 +52,15 @@ $(document).ready(function () {
   		destination = $(elementClick).offset().top;
   		$("body,html").animate({scrollTop: destination }, 800);
 	  });
+    $(".dev-head-el-about").click(function () {
+  		elementClick = $('.dev-head-el-about a').attr("href");
+  		destination = $(elementClick).offset().top;
+  		$("body,html").animate({scrollTop: destination }, 1500);
+	  });
     $('.gmail').click(function() {
         navigator.clipboard.writeText($('.gmail-text').text());
         $('.gmail').text('Скопировано');
         $('.gmail').css("background-color", "#007bff");
         $('.gmail').css("color", "white");
-    });
-    $('.btn-get-access-key').hover(function() {
-        $('.btn-get-access-key').animate({
-            padding: '15px 20px',
-            fontSize: '20px',
-            borderRadius: '100px',
-            borderWidth: '1px'
-        })
     });
 });
